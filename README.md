@@ -12,7 +12,7 @@ These instructions will provide step-by-step instructions on how to replicate th
 
 In order to deploy this code you will need the following: 
 
-1. Downloaded CSV file with external factors that can be combined with image data to predict index
+1. CSV file of external factors that can be combined with your images for prediction - see "External Factors" for a sample of what we used
 2. Anaconda Environment: run [environment.yml](https://github.com/Veronica-1/Capstone/blob/main/environment.yml) in Anaconda Prompt to create a virtual environment using the code ```conda env create -f environment.yml```
 3. Download all satellite images to one folder, below is a sample image for the location we used in [San Francisco](https://goo.gl/maps/V2VxX22U2857wofn7):
 
