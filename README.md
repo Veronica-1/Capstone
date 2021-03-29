@@ -1,4 +1,4 @@
-# IE Capstone 2021: Satellite Image Analysis to Predict Housing Wellness
+# Satellite Image Analysis to Predict Real Estate Housing Wellness
 
 The purpose of this project ... 
 
@@ -32,32 +32,12 @@ Here is what it looks like on our sample image:
   <img height = 600 width = 1000 src="https://github.com/Veronica-1/Capstone/blob/main/High%20Mobility%20Locations.png" alt="High Mobility Locations">
 </p>
 
-Function to crop each image at the same points of interest. <br>
-To include more points, add pixel locations in the following convention to the nested list called `pixel`: [x lower bound, x upper bound, y lower bound, y upper bound] 
-```
-# define pixel locations for each crop on the image 
-pixels = [[500,900,250,650], [300,700,1300,1700],[300,700,600,1000],[575,975,1300,1700], [640,1040,250,650]]
-```
+To include more areas of interest, add pixel locations in the following convention to the nested list called `pixel` in the .ipynb called Process Images: <br>
+[x lower bound, x upper bound, y lower bound, y upper bound] 
 
 ### Perform Image Augmention 
 
-This portion of the code applies the `ImageDataGenerator` function from the Python Keras library on the cropped images to augment each one 10 times. The function currently is as follows and it includes both horizonal and vertical flips as well as reflection of the edges during shifts to maximize change captured between photos. 
-
-```
-# datagen is the function used to augment the images [1] 
-# choose fill_mode from reflect, nearest, constant, or wrap 
-
-datagen = ImageDataGenerator(rotation_range=10,
-                             width_shift_range=0.1, 
-                             height_shift_range=0.1,
-                             shear_range=0.15, 
-                             zoom_range=0.1,
-                             channel_shift_range = 10, 
-                             horizontal_flip=True,
-                             vertical_flip = True, 
-                             fill_mode = 'reflect')
-```
-After defining the augmentation function, perform the augmentation on each of the images [2]. You should now have a folder of images ready to be imported into your Python environment. 
+Once we have cropped images, we can apply the `ImageDataGenerator` function from the Python Keras library to augment each one 10 times [2]. You should now have a folder of images ready to be imported into your Python environment. For more information on best practices for defining your data augmention function, see the [Keras API](https://keras.io/api/preprocessing/image/)
 
 ## Create Arrays for CNN 
 
@@ -68,18 +48,18 @@ At this point, we can begin creating the arrays and dataframes needed to train t
 </p>
 
 ### Preprocess Data
-For the external numeric data, load your CSV file - be sure to drop duplicate weeks and to round each week to the prior **Sunday**. Then divide the index values into buckets using XXX formula so that the CNN can be tested with both regression and classification. `image_array` and `image_labels` are an array and a list respectively read from the folder where the augemented images reside on your machine. Extract the date from the label of the satellite photo - naming convention is as follows - round date to prior **Sunday** and inner join with external data on `match_date`:
+For the external numeric data, load your CSV file - be sure to drop duplicate weeks and to round each week to the prior **Sunday**. If you plan on testing a classification model, divide the index values into buckets. `image_array` and `image_labels` are an array and a list respectively read from the folder where the augemented images reside on your machine. Extract the date from the label of the satellite photo - naming convention is as follows - round date to prior **Sunday** and inner join with external data on `match_date`. 
 
 <p align="center">
   <img src="https://github.com/Veronica-1/Capstone/blob/main/Naming%20Convention.png" alt="Naming Convention">
 </p>
+After this, you should be ready to load your data in a model. Below we will cover the 4 methods we used to process images. 3 are classification and 1 is regression. 
 
-## CNN Implementation - ResNet (Link to that File)
+## CNN Implemention - Regression 
+Discussion of results 
+## CNN Implementation - ResNet
 In model one, the structure of the CNN is a classification based on code from a RestNet architecture
 Here are the results for model accuracy & loss: 
-
-** pic ** 
-
 ## CNN Implemenetion - VGG16
 In model two, we tried a VGG16 architecture and here are the results: 
 
@@ -87,20 +67,18 @@ In model two, we tried a VGG16 architecture and here are the results:
 In model three, we tried an architecture from pyImage search
 
 
-
 ### Versioning
-In the files of this repo, you can find 3 notebooks for each of the models, a notebook showing how to implement a trained model on new data, and finally background code briefly explaining how the index we used was developed. 
 
 
 ## Authors
 
-* **Jonathan Harris**   - [LinkedIn](https://www.linkedin.com/in/jonathan-harris1/)
-* **Veronica Carmody**  - [LinkedIn](https://www.linkedin.com/in/veronica-carmody/)
+* [**Jonathan Harris**](https://www.linkedin.com/in/jonathan-harris1/)
+* [**Veronica Carmody**](https://www.linkedin.com/in/veronica-carmody/)
 * Rest of Team 
 
 ## Intellectual Property
 
-This project is licensed under Northeastern Intellectual Property Rights License 
+This project is licensed under Northeastern's Intellectual Property Rights License 
 
 ## Sources Cited
 1. https://keras.io/api/preprocessing/image/ 
