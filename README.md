@@ -6,7 +6,7 @@ The purpose of this project ...
 
 ## Getting Started
 
-These instructions will provide step-by-step instructions on how to replicate this project on your local machine for development and testing purposes. 
+These instructions will provide step-by-step instructions on how to replicate this project on your local machine for development and testing. 
 
 ### Prerequisites
 
@@ -16,7 +16,9 @@ In order to deploy this code you will need the following:
 2. Downloaded folder that contains each satellite image used in prediction with consistent naming convention
 3. Anaconda Environment --> run environment.yml file in Anaconda Prompt in order to create the virtual environment to run the code ```conda env create -f environment.yml```
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+Here is a sample image for the location we used located [here](https://goo.gl/maps/V2VxX22U2857wofn7) in San Francisco: 
+
+![Satellite Image Example](https://github.com/[Veronica-1]/[Capstone]/blob/[main]/San Fran Image Example.png)
 
 ## Process Images
 
@@ -37,14 +39,14 @@ master = r"...\Original_Images"
 os.chdir(master)
 dirs=glob.glob("*/")
 
-#create a subfolder for tiles 
+# create a subfolder for tiles 
 if not os.path.exists("Tiles"):
     os.makedirs("Tiles")
 
-#list of  files 
+# list of  files 
 files=glob.glob("*.png")
 
-#loop through files, crop areas of interest & save in tiles 
+# loop through files, crop areas of interest & save in tiles 
 for i in files:
     for j in range(0,len(pixels)):
         a,b,c,d = pixels[j]
@@ -56,12 +58,44 @@ for i in files:
 
 ### Perform Image Augmention 
 
-This portion of the code applies the ImageDataGenerator function from the Python Keras library on the images to augment each one 10 times. 
+This portion of the code applies the ImageDataGenerator function from the Python Keras library on the cropped images to augment each one 10 times. 
 The function currently is as follows and it includes both horizonal and vertical flips as well as reflection of the edges during shifts to maximize change captured between photos. 
 
 ```
-Give an example
+# datagen is the function used to augment the images [1] 
+# choose fill_mode from reflect, nearest, constant, or wrap 
+
+datagen = ImageDataGenerator(rotation_range=10,
+                             width_shift_range=0.1, 
+                             height_shift_range=0.1,
+                             shear_range=0.15, 
+                             zoom_range=0.1,
+                             channel_shift_range = 10, 
+                             horizontal_flip=True,
+                             vertical_flip = True, 
+                             fill_mode = 'reflect')
 ```
+After defining the augmentation function, perform the augmentation on each of the images with the following nested loop: 
+
+```
+master = r"...\Location_of_Cropped_Images"
+save_here = r"...\Location_to_Save_Images"
+os.chdir(master)
+dirs=glob.glob("*/")
+files_to_augment=glob.glob("*.png")
+
+# function to augment each image 10 times (range 9) and keep naming convention constant 
+for i in files_to_augment:
+    image_path = '{}\{}'.format(master,i)
+    image = np.expand_dims(imageio.imread(image_path), 0)
+    datagen.fit(image)
+    for x, val in zip(datagen.flow(image,                    
+        save_to_dir=save_here,     
+        save_prefix=i,        
+        save_format='png'),range(9)) :  
+        pass
+ ```
+ After this, you should have a folder of images ready to be imported into your Python environment. 
 
 ## Deployment
 
@@ -83,13 +117,17 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Veronica Carmody**  - [LinkedIn](https://www.linkedin.com/in/veronica-carmody/)
+* **Jonathan Harris**   - [LinkedIn](https://www.linkedin.com/in/jonathan-harris1/)
+* Rest of Team 
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Sources Cited
+[1] https://keras.io/api/preprocessing/image/
+[2] 
 
 ## Acknowledgments
 
