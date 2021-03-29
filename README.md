@@ -29,7 +29,7 @@ The first step of implementing the code is to process satellite images using an 
 In this notebook, change filepaths where needed and test cropping to make sure the dimensions of the cuts are 400 x 400 pixels and point to locations of high mobility in your image. 
 Here is what it looks like on our sample image: 
 <p align="center">
-  <img height = 500 width = 1000 src="https://github.com/Veronica-1/Capstone/blob/main/High%20Mobility%20Locations.png" alt="High Mobility Locations">
+  <img height = 600 width = 1000 src="https://github.com/Veronica-1/Capstone/blob/main/High%20Mobility%20Locations.png" alt="High Mobility Locations">
 </p>
 
 Function to crop each image at the same points of interest. <br>
