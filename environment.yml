@@ -3,12 +3,17 @@ channels:
   - defaults
 dependencies:
   - python=3.7.1
-  - opencv=3.4.1
-  - tensorflow
-  - keras
-  - pillow
+  - opencv >=3.4.1
+  - tensorflow >=1.14.0
+  - keras >=2.3.1
+  - pillow >= 8.2.1
   - xlrd
   - sklearn
   - opencv
   - pandas
   - datetime 
+  - os
+  - glob
+  - imageio
+  - numpy 
+  
