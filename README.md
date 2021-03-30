@@ -33,18 +33,19 @@ The index data is available at <b><font color="red">THIS TABLEAU DASHBOARD</font
 
 The first step of implementing the code is to crop images to locations of interest (areas with high mobility). Areas that experience high levels of change - limit large structures and buildings that are stagnant. This will provide the deep learning model more opportunity to detect change in features and increase the probability that the index will be sensitive to changes in the photos. 
 
-### Open the Image Processing Notebook .ipynb
+### Open Image Preparation.ipynb
 
 In this notebook, change filepaths where needed and test cropping to make sure the dimensions of the cuts are 400 x 400 pixels and point to desired locations in your image. 
+This notebook pulls in functions from the prepare_images.py file, so make sure that it is saved in the same location as your notebook. 
 Here is what that looks like on the sample image: 
 <p align="center">
   <img height = 600 width = 1000 src="https://github.com/Veronica-1/Capstone/blob/main/images/High%20Mobility%20Locations.png" alt="High Mobility Locations">
 </p>
 
-To include more areas of interest, add pixel locations in the following convention to the nested list called `pixel` in the .ipynb called Process Images: <br>
+If you need to change the locations of interest, you can find them in the prepare_images file. To edit or include more areas, add pixel locations in the following convention to the nested list called `pixel` - make sure that the images are all a standard shape: <br>
 [x lower bound, x upper bound, y lower bound, y upper bound] 
 
-## Open the Image Augmentation Notebook .ipynb 
+## Image Augmentation 
 
 Next, we need to process the crops using an image augmentation function. The purpose of this is to prevent the model from learning specific image orientations and to provide it with more data to train on. We can apply the `ImageDataGenerator` function from the Python Keras library to augment each one 10 times [2]. We defined our augmentation function to include a series of horizontal and vertical flips, edge mirroring, and frame shifting. For more information on best practices for defining your data augmention function, see the [Keras API](https://keras.io/api/preprocessing/image/). Image augmentation should look something like this: 
 
@@ -63,14 +64,18 @@ At this point, we can begin creating the arrays and dataframes needed to train t
 </p>
 
 ### Load External Data 
-For the external numeric data, load your CSV file - be sure to drop duplicate weeks and to round each week to the prior **Sunday**. If you plan on testing a classification model, as done in this model, divide the index values into buckets. You will need to normalize your external data. There is a function defined called `process_structured_data` that performs min max scaling on continuous data. See [here](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/) for advice on encoding ordinal data. 
+For the external numeric data, load your CSV file in a format that has your numeric data to be included in the prediction, as well as the index (or value to be predicted) for that week. Here is an example of our formatting: 
 
-### Load Image Data 
-`image_array` and `image_labels` are an array and a list, respectively, read from the folder where the augemented images reside on your machine. Extract the date from the label of the satellite photo - naming convention is as follows - and round the date to prior **Sunday** to inner join with external data on `match_date`.
+**IMAGE OF CSV**
+
+In the .py file called load_data, we call the CSV files and preform merging and bucketing to prepare it for classification and align it with the photos based on date values. This function is called at the start of each model notebook, but please edit as needed directly from the .py. Outputs of the `load_data` function are an `image_array` with nested image values, and the `df_for_training` which is a df that includes only the columns you want to train your model on. One important note that is your labeling of images will depend on the convention for the satellile you're using and it will be added to during cropping and augmentation activities. Here is an example of ours: 
 
 <p align="center">
   <img src="https://github.com/Veronica-1/Capstone/blob/main/images/Naming%20Convention.png">
 </p>
+
+### Prep Data for Model
+There is a function defined called `process_structured_data` that performs min max scaling on continuous data. See [here](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/) for advice on encoding ordinal data. This function is performed at the start of every deep learning model in order to get the data into an approproate format for training. ***DATA IS ALSO NORMALIZED - INDEX?*** 
 
 After this, you should be ready to load your data in a model. Below we will cover the 4 methods we used to process images and make a prediction on the index. 1 is regression and 3 are classification and 1 is regression. All model approaches encompassed the general approach used by *pyimagesearch* [4] in processing multiple inputs: images and other data. The methods below differ across their CNN structures. 
 
@@ -109,6 +114,6 @@ This project is licensed under Northeastern's Intellectual Property Rights Licen
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* We'd like to acknowledge the author of *pyimagesearch* for providing open source code that informed the understanding of a mixed-data approach
+* We'd also like to acknowledge our advisor, Sagar Kamarthi PhD, and our technical design reviewer, Sri Radhakrishnan PhD
+* Finally, we'd like to thank our Northeastern capstone advisors, Professors McManus & Jager-Helton of the IE department 
