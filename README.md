@@ -19,7 +19,7 @@ In order to deploy this code you will need the following:
 3. Download all satellite images to one folder, below is a sample image for the location we used in [San Francisco](https://goo.gl/maps/V2VxX22U2857wofn7):
 
 <p align="center">
-  <img src="https://github.com/Veronica-1/Capstone/blob/main/San%20Fran%20Image%20Example.png" alt="San Fran Image">
+  <img src="https://github.com/Veronica-1/Capstone/images/blob/main/San%20Fran%20Image%20Example.png" alt="San Fran Image">
 </p>
 
 ## Target Index
@@ -38,7 +38,7 @@ The first step of implementing the code is to crop images to locations of intere
 In this notebook, change filepaths where needed and test cropping to make sure the dimensions of the cuts are 400 x 400 pixels and point to desired locations in your image. 
 Here is what that looks like on the sample image: 
 <p align="center">
-  <img height = 600 width = 1000 src="https://github.com/Veronica-1/Capstone/blob/main/High%20Mobility%20Locations.png" alt="High Mobility Locations">
+  <img height = 600 width = 1000 src="https://github.com/Veronica-1/Capstone/images/blob/main/High%20Mobility%20Locations.png" alt="High Mobility Locations">
 </p>
 
 To include more areas of interest, add pixel locations in the following convention to the nested list called `pixel` in the .ipynb called Process Images: <br>
@@ -49,7 +49,7 @@ To include more areas of interest, add pixel locations in the following conventi
 Next, we need to process the crops using an image augmentation function. The purpose of this is to prevent the model from learning specific image orientations and to provide it with more data to train on. We can apply the `ImageDataGenerator` function from the Python Keras library to augment each one 10 times [2]. We defined our augmentation function to include a series of horizontal and vertical flips, edge mirroring, and frame shifting. For more information on best practices for defining your data augmention function, see the [Keras API](https://keras.io/api/preprocessing/image/). Image augmentation should look something like this: 
 
 <p align="center">
-  <img src="https://github.com/Veronica-1/Capstone/blob/main/Image%20Aug%20Horizontal.png" alt="Horizonal Image Augmentation">
+  <img src="https://github.com/Veronica-1/Capstone/images/blob/main/Image%20Aug%20Horizontal.png" alt="Horizonal Image Augmentation">
 </p>
 
 After implementing this code, you should have a folder of images ready to be imported into your Python environment. The .py file called `load_data.py` contains a function that you can call with your appropriate file path. It will load and merge your images into the arrays needed as model input. Below we discuss what those structures look like. 
@@ -59,7 +59,7 @@ After implementing this code, you should have a folder of images ready to be imp
 At this point, we can begin creating the arrays and dataframes needed to train the deep learning model. Below is a diagram of the way this network will be structured. We need to generate data for the two sides of the model, the image side and the external data side.
 
 <p align="center">
-  <img height = 500 width = 300 src="https://github.com/Veronica-1/Capstone/blob/main/Deep%20Learning%20Model%20Structure.png" alt="Deep Learning Structure">
+  <img height = 500 width = 300 src="https://github.com/Veronica-1/Capstone/images/blob/main/Deep%20Learning%20Model%20Structure.png" alt="Deep Learning Structure">
 </p>
 
 ### Load External Data 
@@ -69,7 +69,7 @@ For the external numeric data, load your CSV file - be sure to drop duplicate we
 `image_array` and `image_labels` are an array and a list, respectively, read from the folder where the augemented images reside on your machine. Extract the date from the label of the satellite photo - naming convention is as follows - and round the date to prior **Sunday** to inner join with external data on `match_date`.
 
 <p align="center">
-  <img src="https://github.com/Veronica-1/Capstone/blob/main/Naming%20Convention.png">
+  <img src="https://github.com/Veronica-1/Capstone/images/blob/main/Naming%20Convention.png">
 </p>
 
 After this, you should be ready to load your data in a model. Below we will cover the 4 methods we used to process images and make a prediction on the index. 1 is regression and 3 are classification and 1 is regression. All model approaches encompassed the general approach used by *pyimagesearch* [4] in processing multiple inputs: images and other data. The methods below differ across their CNN structures. 
