@@ -111,6 +111,7 @@ This project is licensed under Northeastern's Intellectual Property Rights Licen
 2. https://stackoverflow.com/questions/47826730/how-to-save-resized-images-using-imagedatagenerator-and-flow-from-directory-in-k
 3. https://github.com/L-Lewis/Predicting-traffic-accidents-CNN
 4. https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/
+5. https://github.com/L-Lewis/Predicting-traffic-accidents-CNN/blob/master/7_Model3_mixed_input_neural_network.ipynb
 
 ## Acknowledgments
 
