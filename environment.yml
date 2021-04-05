@@ -16,4 +16,6 @@ dependencies:
   - glob
   - imageio
   - numpy 
+  - matplotlib
+
   
