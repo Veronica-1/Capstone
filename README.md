@@ -88,7 +88,7 @@ Resnet is a typical deep learning architecture that smooths forward/backward lea
 We used a resnet-50 architecture found on [**THIS LINK**] and implemented it with our data for a classification task. The following accuracy was achieved after 25 epochs of training: 
 
 ## CNN Implemenetion - VGG16
-Finally, we implemented a VGG16 network (architecture found [here](https://towardsdatascience.com/step-by-step-vgg16-implementation-in-keras-for-beginners-a833c686ae6c)). VGG nets were developed to reduce training time by using a fixed, small kernel size to capture the same feature vectors in less time. It also has fewer trainable parameters than other deep learning models which reduces the liklihood of over-fitting. With our task, there are elements in the images that are not indicative of mobility change (buildings and roads), and a VGG is equipped to handle these since it drops "background" unnecessary imageinformation in the last layer before prediction which increases overall accuracy [6]. 
+Finally, we implemented a VGG16 network (architecture found [here](https://towardsdatascience.com/step-by-step-vgg16-implementation-in-keras-for-beginners-a833c686ae6c)). VGG nets were developed to reduce trainable parameters by using a fixed, small kernel size to capture the same feature vectors in less time while reducing the liklihood of over-fitting. With our task, there are elements in the images that are not indicative of mobility change (buildings and roads), and a VGG is equipped to handle these since it drops "background" unnecessary imageinformation in the last layer before prediction which increases overall accuracy [6]. 
 
 ## Authors
 
