@@ -42,7 +42,7 @@ Here is what that looks like on the sample image:
   <img height = 600 width = 1000 src="https://github.com/Veronica-1/Capstone/blob/main/images/High%20Mobility%20Locations.png" alt="High Mobility Locations">
 </p>
 
-If you need to change the locations of interest, you can find them in the prepare_images file. To edit or include more areas, add pixel locations in the following convention to the nested list called `pixel` - make sure that the images are all a standard shape: <br>
+If you need to change the locations of interest, you can find them in the prepare_images file. More information regarding image processing can be found [here](https://keras.io/api/preprocessing/image/) [1]. To edit or include more areas, add pixel locations in the following convention to the nested list called `pixel` - make sure that the images are all a standard shape: <br>
 [x lower bound, x upper bound, y lower bound, y upper bound] 
 
 ## Image Augmentation 
@@ -75,32 +75,25 @@ In the .py file called load_data, we call the CSV files and preform merging and 
 </p>
 
 ### Prep Data for Model
-There is a function defined called `process_structured_data` that performs min max scaling on continuous data. See [here](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/) for advice on encoding ordinal data. This function is performed at the start of every deep learning model in order to get the data into an approproate format for training. ***DATA IS ALSO NORMALIZED - INDEX?*** 
+There is a function defined called `process_structured_data` that performs min max scaling on continuous data. See [here](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/) for advice on encoding ordinal data. This function is performed at the start of every deep learning model in order to get the data into an appropropriate format for training. The function also uses quartiles to divide the index values into 4 buckets for classification in a new column. Because the purpose of this model is to inform decision-makers about the relative housing health in their community, we opted to report the index in quartiles to best demonstrate change over time without making it sensitive to minor fluctuations. 
 
-After this, you should be ready to load your data in a model. Below we will cover the 4 methods we used to process images and make a prediction on the index. 1 is regression and 3 are classification and 1 is regression. All model approaches encompassed the general approach used by *pyimagesearch* [4] in processing multiple inputs: images and other data. The methods below differ across their CNN structures. 
+After this, you should be ready to load your data in a model. Below we will cover the 3 methods we used to process images and make a prediction on the index. All model approaches encompassed the general approach used by *pyimagesearch* [4] in processing multiple inputs: images and other data. The methods below differ across their CNN structures. 
 
-## CNN Implemention - Regression 
-Discussion of results 
-
-## CNN Implementation - ResNet
-In Model 1, the structure of the CNN is a classification based on code from a RestNet architecture.
-Here are the results for model accuracy & loss: 
-
-## CNN Implemenetion - VGG16
-In Model 2, we tried a VGG16 architecture. The results were as follows:
 
 ## CNN Implementation - PyImageSearch Architecture
-In Model 3, we tried an architecture from pyImage search. This was the best performing model. The results were as follows:
+ Adrian Rosebrock provides a comprehensive example with included code of mixed-date input to a deep learning model for an image regression task on [PyImageSearch](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/). He uses a database of housing photos and external factors like number of rooms and square footage to predict the housing price. He sets up a multi-layer perceptron to pre-process the numeric data and a CNN to process the image data, and then combines MLP and CNN output in a 2-layer feed-forward neural net to maket the final prediction. We followed this basic structure for the models with our own data and only made adjustments to change the model to a classification task. [This](https://github.com/L-Lewis/Predicting-traffic-accidents-CNN) link is a project that was based on the pyimagesearch but performs classification and provides additional explanation and analysis throughout multiple model iterations. This basic CNN structure performed the worst out of all attempted architectures, with a maximum accuracy achieved of **X** after 25 epochs of training. 
+ 
+## CNN Implementation - ResNet
+Resnet is a typical deep learning architecture that smooths forward/backward learning through **block propogation** which diminishes the vanishing gradient issue that occurs in earlier model types. Vanishing gradient is a problem that occurs when the model makes diminishingly small updates to the weights of each node which essentially slows learning to a halt. Resnet models are resilient against this and also robust against over-fitting by reducing total number of trained parameters. 
+We used a resnet-50 architecture found on [**THIS LINK**] and implemented it with our data for a classification task. The following accuracy was achieved after 25 epochs of training: 
 
-
-### Versioning
-
+## CNN Implemenetion - VGG16
+Finally, we implemented a VGG16 network (architecture found [here](https://towardsdatascience.com/step-by-step-vgg16-implementation-in-keras-for-beginners-a833c686ae6c)). VGG nets were developed to reduce training time by using a fixed, small kernel size to capture the same feature vectors in less time. It also has fewer trainable parameters than other deep learning models which reduces the liklihood of over-fitting. With our task, there are elements in the images that are not indicative of mobility change (buildings and roads), and a VGG is equipped to handle these since it drops "background" unnecessary imageinformation in the last layer before prediction which increases overall accuracy [6]. 
 
 ## Authors
 
 * [**Jonathan Harris**](https://www.linkedin.com/in/jonathan-harris1/)
 * [**Veronica Carmody**](https://www.linkedin.com/in/veronica-carmody/)
-* Rest of Team 
 
 ## Intellectual Property
 
@@ -112,6 +105,7 @@ This project is licensed under Northeastern's Intellectual Property Rights Licen
 3. https://github.com/L-Lewis/Predicting-traffic-accidents-CNN
 4. https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/
 5. https://github.com/L-Lewis/Predicting-traffic-accidents-CNN/blob/master/7_Model3_mixed_input_neural_network.ipynb
+6. https://www.quora.com/What-is-the-VGG-neural-network
 
 ## Acknowledgments
 
