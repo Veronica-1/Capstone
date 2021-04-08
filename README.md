@@ -2,7 +2,7 @@
 
 The purpose of this project is to produce a feasible pipeline for predicting a custom housing market wellness index in real-time, which is especially relevant during times of disruption. This approach is scalable for predicting other socioeconomic conditions with satellite imagery.
 
-The full report for this project can be found here: PUBLIC WORD DOC, PDF, OR PDF UPLOADED TO THIS GITHUB PAGE.
+The full report for this project can be found here: *PUBLIC REPORT PDF*.
 
 **Results**: results overview 
 
