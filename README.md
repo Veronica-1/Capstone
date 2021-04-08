@@ -26,8 +26,8 @@ In order to deploy this code you will need the following:
 
 This project aims to predict an index representing the housing market wellness at the zip code granularity on a weekly basis. Data was downloaded from [Redfin's data center](https://www.redfin.com/news/data-center/) for the regions of interest (MA and CA) to calculate the index. The index was created from scratch due to its transparent nature and the lack of availability of indicies at the appropriate level of detail for the scope of the project.
 
-To formulate the index, monthly, zip code data was compared to monthly, county-level data. Using the relationship between these for each month, the weekly zip code data was interpolated from the weekly counted data. The various market metrics were normalized to create the index via a linear combination of the metrics.
-The index data is available at <b><font color="red">THIS TABLEAU DASHBOARD</font></b> with the R code for the index's formulation available in the <b><font color="red">respective file included</font></b>.
+To formulate the index, monthly, zip code data was compared to monthly, county-level data. Using the relationship between these for each month, the weekly zip code data was interpolated from the weekly counted data. The various market metrics were transformed to adjust for monthly seasonality and then normalized to create the index via a linear combination of the metrics.
+The index data is available at <b><font color="red">THIS TABLEAU DASHBOARD</font></b> with the R code for the index's formulation available in the .html file attached in this repository.
 
 ## Process Images
 
