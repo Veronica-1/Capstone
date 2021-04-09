@@ -8,7 +8,6 @@ import datetime
 from pandas.tseries.offsets import *
 from matplotlib.pyplot import imshow, show
 import matplotlib as plt
-import pandas as pd
 
 def load_data_MA(aug_location, external_path):
     '''load image labels from file path, 
