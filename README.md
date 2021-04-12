@@ -82,11 +82,20 @@ After this, we loaded data into our model. Below we will cover the 3 methods we 
 
 ## CNN Implementation - PyImageSearch Basic Architecture
 Adrian Rosebrock provides a comprehensive example with included code of mixed-date input to a deep learning model for an image regression task on [PyImageSearch](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/). He uses a database of housing photos and external factors (i.e., number of rooms, square footage, etc.) to predict the housing price. He sets up a multi-layer perceptron to proces the numeric data and a CNN to process the image data, and then combines MLP and CNN output in a 2-layer feed-forward neural net to maket the final prediction. We followed this basic structure for the models with our own data and only made adjustments to change the model to a classification task. [This](https://github.com/L-Lewis/Predicting-traffic-accidents-CNN) link is a project that was based on the pyimagesearch but performs classification and provides additional explanation and analysis throughout multiple model iterations. This basic CNN structure performed the worst out of all attempted architectures, with a maximum accuracy achieved of **X** after 25 epochs of training. 
- 
+
+<p align="center">
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/San%20Fran%20Image%20Example.png" alt="San Fran Image">
+</p>
+
 ## CNN Implementation - ResNet
 Resnet is a state-of-the-art CNN architecture that smooths forward/backward learning through **block propogation** which diminishes the vanishing gradient issue that occurs in deep models. Vanishing gradient is a problem that occurs when the model makes diminishingly small updates to the weights of each node which essentially slows learning to a halt. This occurs when a modle becomes too deep to propogate results backward through the network. Resnet models are resilient against this and also robust against over-fitting by reducing total number of trained parameters. 
 
-We tested a ResNet architecture [7] and a built-in Resnet50 architecture (from Keras) for implementation with our data for bucket classification. Below are the results:
+We tested a basic Resnet architecture [7] and a built-in Resnet50 architecture (from Keras) for implementation with our data for bucket classification. Below are the results:
+
+<p align="center"> <b>Basic Resnet</b></br>
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/ResNet1Charts.png" alt="ResNet1 Charts">
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/ResNet1ConfMat.png" alt="ResNet1 Confusion Matrix">
+</p>
 
 After implementing an early stop from validation loss not improving for 10 epochs in a row, the Resnet50 trained for 38 epochs and had a maximum accuracy for predicting the test data set buckets of 49%, which occurred at the 24th epoch of training. 
 
