@@ -86,13 +86,17 @@ Adrian Rosebrock provides a comprehensive example with included code of mixed-da
 ## CNN Implementation - ResNet
 Resnet is a state-of-the-art CNN architecture that smooths forward/backward learning through **block propogation** which diminishes the vanishing gradient issue that occurs in deep models. Vanishing gradient is a problem that occurs when the model makes diminishingly small updates to the weights of each node which essentially slows learning to a halt. This occurs when a modle becomes too deep to propogate results backward through the network. Resnet models are resilient against this and also robust against over-fitting by reducing total number of trained parameters. 
 
-We tested a ResNet architecture [7] and a built-in Resnet50 architecture (from Keras) for implementation with our data for bucket classification. The following accuracy was achieved after 25 epochs of training: 
+We tested a ResNet architecture [7] and a built-in Resnet50 architecture (from Keras) for implementation with our data for bucket classification. Below are the results:
+
+After implementing an early stop from validation loss not improving for 10 epochs in a row, the Resnet50 trained for 38 epochs and had a maximum accuracy for predicting the test data set buckets of 49%, which occurred at the 24th epoch of training. 
 
 ## CNN Implemenetion - VGG16
-Finally, we implemented a VGG16 network (architecture found [here](https://towardsdatascience.com/step-by-step-vgg16-implementation-in-keras-for-beginners-a833c686ae6c)). VGG nets were developed to reduce trainable parameters by using a fixed, small kernel size to capture the same feature vectors in less time while reducing the liklihood of over-fitting. With our task, there are elements in the images that are not indicative of mobility change (buildings and roads), and a VGG is equipped to handle these since it drops "background" unnecessary imageinformation in the last layer before prediction which increases overall accuracy [6]. 
+Finally, we implemented a VGG16 network (architecture found [here](https://towardsdatascience.com/step-by-step-vgg16-implementation-in-keras-for-beginners-a833c686ae6c)). VGG nets were developed to reduce trainable parameters by using a fixed, small kernel size to capture the same feature vectors in less time while reducing the liklihood of over-fitting. With our task, there are elements in the images that are not indicative of mobility change (buildings and roads), and a VGG is equipped to handle these since it drops "background" unnecessary imageinformation in the last layer before prediction which increases overall accuracy [6].
+
+As for results, the VGG16 performed well despite long training times. After training this model for 30 epochs, the model was able to predict on the test set with 71% accuracy, as seen in the charts and confusion below. As evident in the accuracy chart, the validation accuracy seemed to level off at 30 epochs. Despite potential further improvement (as seen after the long stretch of accuracy hovering ~45%), the training was limited due to computation constraints. Further, this accuracy was deemed success. 
 
 ## Model Choice
-Given the current dataset, the VGG16 performed optimally with an accuracy of **XX**. In future applications, this model selection might change as the dataset increases in size. Therefore, the code is structured in a way that enables easy swapping of models for the prediction itself.
+Given the current dataset, the VGG16 performed optimally with an accuracy of **71%** on the test set. In future applications, this model selection might change as the dataset increases in size, more powerful computers are used, and architecture changes improve changes. Therefore, the code is structured in a way that enables easy swapping of models for the prediction itself.
 
 ## Authors
 
