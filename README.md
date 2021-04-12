@@ -81,10 +81,11 @@ After this, we loaded data into our model. Below we will cover the 3 methods we 
 
 
 ## CNN Implementation - PyImageSearch Basic Architecture
-Adrian Rosebrock provides a comprehensive example with included code of mixed-date input to a deep learning model for an image regression task on [PyImageSearch](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/). He uses a database of housing photos and external factors (i.e., number of rooms, square footage, etc.) to predict the housing price. He sets up a multi-layer perceptron to proces the numeric data and a CNN to process the image data, and then combines MLP and CNN output in a 2-layer feed-forward neural net to maket the final prediction. We followed this basic structure for the models with our own data and only made adjustments to change the model to a classification task. [This](https://github.com/L-Lewis/Predicting-traffic-accidents-CNN) link is a project that was based on the pyimagesearch but performs classification and provides additional explanation and analysis throughout multiple model iterations. This basic CNN structure performed the worst out of all attempted architectures, with a maximum accuracy achieved of **X** after 25 epochs of training. 
+Adrian Rosebrock provides a comprehensive example with included code of mixed-date input to a deep learning model for an image regression task on [PyImageSearch](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/). He uses a database of housing photos and external factors (i.e., number of rooms, square footage, etc.) to predict the housing price. He sets up a multi-layer perceptron to proces the numeric data and a CNN to process the image data, and then combines MLP and CNN output in a 2-layer feed-forward neural net to maket the final prediction. We followed this basic structure for the models with our own data and made adjustments to change the model to a classification task and elimination of the initial MLP to maintain the integrity of the external data in its original intersection with the image information. [This](https://github.com/L-Lewis/Predicting-traffic-accidents-CNN) link is a project that was based on the pyimagesearch but performs classification and provides additional explanation and analysis throughout multiple model iterations. This basic CNN structure performed the worst out of all attempted architectures, with a maximum accuracy achieved of **X** after 25 epochs of training. 
 
-<p align="center">
-  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/San%20Fran%20Image%20Example.png" alt="San Fran Image">
+<p align="center"> <b>Basic Architecture Results</b></br>
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/SimpleArchCharts.png" alt="Simple Architecture Charts">
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/SimpleArchConfMat.png" alt="Simple Architecture Confusion Matrix">
 </p>
 
 ## CNN Implementation - ResNet
@@ -92,15 +93,25 @@ Resnet is a state-of-the-art CNN architecture that smooths forward/backward lear
 
 We tested a basic Resnet architecture [7] and a built-in Resnet50 architecture (from Keras) for implementation with our data for bucket classification. Below are the results:
 
-<p align="center"> <b>Basic Resnet</b></br>
+<p align="center"> <b>Basic Resnet Results</b></br>
   <img src="https://github.com/Veronica-1/Capstone/blob/main/images/ResNet1Charts.png" alt="ResNet1 Charts">
   <img src="https://github.com/Veronica-1/Capstone/blob/main/images/ResNet1ConfMat.png" alt="ResNet1 Confusion Matrix">
+</p>
+
+<p align="center"> <b>Resnet50 Results</b></br>
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/ResNet50Charts.png" alt="ResNet50 Charts">
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/ResNet50ConfMat.png" alt="ResNet50 Confusion Matrix">
 </p>
 
 After implementing an early stop from validation loss not improving for 10 epochs in a row, the Resnet50 trained for 38 epochs and had a maximum accuracy for predicting the test data set buckets of 49%, which occurred at the 24th epoch of training. 
 
 ## CNN Implemenetion - VGG16
 Finally, we implemented a VGG16 network (architecture found [here](https://towardsdatascience.com/step-by-step-vgg16-implementation-in-keras-for-beginners-a833c686ae6c)). VGG nets were developed to reduce trainable parameters by using a fixed, small kernel size to capture the same feature vectors in less time while reducing the liklihood of over-fitting. With our task, there are elements in the images that are not indicative of mobility change (buildings and roads), and a VGG is equipped to handle these since it drops "background" unnecessary imageinformation in the last layer before prediction which increases overall accuracy [6].
+
+<p align="center"> <b>VGG16 Results</b></br>
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/VGG16Charts_1.png" alt="VGG16 Charts">
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/VGG16ConfMat.png" alt="VGG16 Confusion Matrix">
+</p>
 
 As for results, the VGG16 performed well despite long training times. After training this model for 30 epochs, the model was able to predict on the test set with 71% accuracy, as seen in the charts and confusion below. As evident in the accuracy chart, the validation accuracy seemed to level off at 30 epochs. Despite potential further improvement (as seen after the long stretch of accuracy hovering ~45%), the training was limited due to computation constraints. Further, this accuracy was deemed success. 
 
