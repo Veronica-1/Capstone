@@ -125,7 +125,7 @@ As the final step, predictions on new images can be made in a separate Image Pre
 2. Retrieve the external data factors associated with the dates for the target prediction images
 3. Use the model to predict the image's index classification
 
-<p align="center"> <b>VGG16 Results</b></br>
+<p align="center">
   <img src="https://github.com/Veronica-1/Capstone/blob/main/images/Image_Pred.png" alt="Prediction Demo">
 </p>
 
