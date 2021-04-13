@@ -81,7 +81,7 @@ After this, we loaded data into our model. Below we will cover the 3 methods we 
 
 
 ## CNN Implementation - PyImageSearch Basic Architecture
-Adrian Rosebrock provides a comprehensive example with included code of mixed-date input to a deep learning model for an image regression task on [PyImageSearch](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/). He uses a database of housing photos and external factors (i.e., number of rooms, square footage, etc.) to predict the housing price. He sets up a multi-layer perceptron to proces the numeric data and a CNN to process the image data, and then combines MLP and CNN output in a 2-layer feed-forward neural net to maket the final prediction. We followed this basic structure for the models with our own data and made adjustments to change the model to a classification task and elimination of the initial MLP to maintain the integrity of the external data in its original intersection with the image information. [This](https://github.com/L-Lewis/Predicting-traffic-accidents-CNN) link is a project that was based on the pyimagesearch but performs classification and provides additional explanation and analysis throughout multiple model iterations. This basic CNN structure performed the worst out of all attempted architectures, with a maximum accuracy achieved of **69%** after 17 oepochs of training, and early stopping occurrng after 20 epochs from halted improvement in the loss function. 
+Adrian Rosebrock provides a comprehensive example with included code of mixed-date input to a deep learning model for an image regression task on [PyImageSearch](https://www.pyimagesearch.com/2019/02/04/keras-multiple-inputs-and-mixed-data/). He uses a database of housing photos and external factors (i.e., number of rooms, square footage, etc.) to predict the housing price. He sets up a multi-layer perceptron to proces the numeric data and a CNN to process the image data, and then combines MLP and CNN output in a 2-layer feed-forward neural net to maket the final prediction. We followed this basic structure for the models with our own data and made adjustments to change the model to a classification task and elimination of the initial MLP to maintain the integrity of the external data in its original intersection with the image information. [This](https://github.com/L-Lewis/Predicting-traffic-accidents-CNN) link is a project that was based on the pyimagesearch but performs classification and provides additional explanation and analysis throughout multiple model iterations. This basic CNN structure performed the worst out of all attempted architectures, with a maximum accuracy achieved of **69%** after 17 epochs of training, and early stopping occurrng after 20 epochs from halted improvement in the loss function. 
 
 <p align="center"> <b>Basic Architecture Results</b></br>
   <img src="https://github.com/Veronica-1/Capstone/blob/main/images/SimpleArchCharts.png" alt="Simple Architecture Charts">
@@ -116,7 +116,20 @@ Finally, we implemented a VGG16 network (architecture found [here](https://towar
 As for results, the VGG16 performed well despite long training times. After training this model for 30 epochs, the model was able to predict on the test set with 71% accuracy, as seen in the charts and confusion below. As evident in the accuracy chart, the validation accuracy seemed to level off at 30 epochs. Despite potential further improvement (as seen after the long stretch of accuracy hovering ~45%), the training was limited due to computation constraints. Further, this accuracy was deemed success. 
 
 ## Model Choice
-Given the current dataset, the VGG16 performed optimally with an accuracy of **71%** on the test set. In future applications, this model selection might change as the dataset increases in size, more powerful computers are used, and architecture changes improve changes. Therefore, the code is structured in a way that enables easy swapping of models for the prediction itself.
+Given the current dataset, the VGG16 performed optimally with an accuracy of **71%** on the test set. One notable point is that all models struggled to predict index values in bucket 4. This can likely be attributed to limited samples of images with this label in the available dataset. In future applications, this model selection might change as the dataset increases in size, more powerful computers are used, and architecture changes improve changes. Therefore, the code is structured in a way that enables easy swapping of models for the prediction itself.
+
+## Image Prediction Notebook
+As the final step, predictions on new images can be made in a separate Image Prediction Demo notebook. This notebook was used for an original demonstration of the project's functionality, and can be adjusted based on stakeholder needs. The notebook consists of the following steps:
+
+1. Load the saved model of choice from the training (VGG16 in the current iteration)
+2. Retrieve the external data factors associated with the dates for the target prediction images
+3. Use the model to predict the image's index classification
+
+<p align="center"> <b>VGG16 Results</b></br>
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/Image_Pred.png" alt="Prediction Demo">
+</p>
+
+After this prediction has been run, the prediction can be compared to the historic values for the index buckets on a time series chart. This data can easily be connected to the exploration dashboard for prediction vs. historic data comparisons.
 
 ## Authors
 
