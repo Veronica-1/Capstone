@@ -60,7 +60,7 @@ After implementing this code, you should have a folder of images ready to be imp
 At this point, we can begin creating the arrays and dataframes needed to train the deep learning model. Below is a diagram of the way this network will be structured. We need to generate data for the two sides of the model, the image side and the external data side.
 
 <p align="center">
-  <img height = 500 width = 300 src="https://github.com/Veronica-1/Capstone/blob/main/images/Deep%20Learning%20Model%20Structure.png" alt="Deep Learning Structure">
+  <img height = 400 width = 300 src="https://github.com/Veronica-1/Capstone/blob/main/images/Deep%20Learning%20Model%20Structure.png" alt="Deep Learning Structure">
 </p>
 
 ### Load External Data 
