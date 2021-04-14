@@ -4,8 +4,6 @@ The purpose of this project is to produce a feasible pipeline for predicting a c
 
 The full report for this project can be found here: *public report pdf*.
 
-**Results**: results overview 
-
 ## Getting Started
 
 These instructions will provide step-by-step instructions on how to replicate this project on your local machine for development and testing. 
