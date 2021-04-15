@@ -1,4 +1,4 @@
-# Satellite Image Analysis to Predict Real Estate Housing Wellness
+# Satellite Image Analysis to Predict Socioeconomic Factors during the COVID-19 pandemic
 
 The purpose of this project is to produce a feasible pipeline for predicting a custom housing market wellness index in real-time, which is especially relevant during times of disruption. This approach is scalable for predicting other socioeconomic conditions with satellite imagery.
 
