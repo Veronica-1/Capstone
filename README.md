@@ -127,7 +127,10 @@ As the final step, predictions on new images can be made in a separate Image Pre
   <img src="https://github.com/Veronica-1/Capstone/blob/main/images/Image_Pred.png" alt="Prediction Demo">
 </p>
 
-After this prediction has been run, the prediction can be compared to the historic values for the index buckets on a time series chart. This data can easily be connected to the exploration dashboard for prediction vs. historic data comparisons.
+After this prediction has been run, the prediction can be compared to the historic values for the index buckets on a time series chart. This data can easily be connected to the exploration dashboard for prediction vs. historic data comparisons. In the below, chart the points in blue are real historic values for the index, and the red point is the predicted value for the week of May 7th, 2020. This visual can be recreated with new data in the image prediction notebook. 
+<p align="center">
+  <img src="https://github.com/Veronica-1/Capstone/blob/main/images/Wellness%20Graph.png" alt="Wellness Graph">
+</p>
 
 ## Authors
 
