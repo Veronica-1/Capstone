@@ -25,7 +25,7 @@ In order to deploy this code you will need the following:
 This project aims to predict an index representing the housing market wellness at the zip code granularity on a weekly basis. Data was downloaded from [Redfin's data center](https://www.redfin.com/news/data-center/) for the regions of interest (MA and CA) to calculate the index. The index was created from scratch due to its transparent nature and the lack of availability of indicies at the appropriate level of detail for the scope of the project.
 
 To formulate the index, monthly, zip code data was compared to monthly, county-level data. Using the relationship between these for each month, the weekly zip code data was interpolated from the weekly counted data. The various market metrics were transformed to adjust for monthly seasonality and then normalized to create the index via a linear combination of the metrics.
-The index data is available at <b><font color="red">THIS TABLEAU DASHBOARD</font></b> with the R code for the index's formulation available in the .html file attached in this repository.
+The index data is available at [this Tableau dashboard](https://public.tableau.com/profile/ziad.hassan#!/vizhome/CustomerInteractiveTableauLatest4_8/IndexChartDashboard) with the R code for the index's formulation available in the .html file attached in this repository.
 
 ## Process Images
 
@@ -152,6 +152,6 @@ This project is licensed under Northeastern's Intellectual Property Rights Licen
 
 ## Acknowledgments
 
-* We'd like to acknowledge the author of *pyimagesearch* for providing open source code that informed the understanding of a mixed-data approach
-* We'd also like to acknowledge our advisor, Sagar Kamarthi PhD, and our technical design reviewer, Sri Radhakrishnan PhD
-* Finally, we'd like to thank our Northeastern capstone advisors, Professors McManus & Jager-Helton of the IE department 
+* We'd like to acknowledge the author of *pyimagesearch* for providing open source code that informed the initial understanding of a mixed-data approach and other authors of the cited references.
+* We'd also like to acknowledge our advisor, Sagar Kamarthi PhD, and our technical design reviewer, Sri Radhakrishnan PhD.
+* Finally, we'd like to thank our Northeastern capstone advisors, Professors McManus & Jager-Helton of the IE department!
