@@ -134,3 +134,12 @@ def array_to_df(prediction_array):
         df_list.append(val)
     df_output = pd.DataFrame({'predicted_bucket':df_list})
     return df_output
+
+
+def historic_manip(historic_ext):
+	historic_ext['Date'] = pd.to_datetime(historic_ext['Date'])
+	historic_ext["match_date"] =  historic_ext['Date'] + Week(weekday=6) - Week()
+	historic_ext = historic_ext.drop_duplicates(subset="match_date")
+	historic_ext = historic_ext.sort_values('match_date')
+	historic_ext["buckets"] = pd.qcut(historic_ext["MA_3Wk"], 4, labels = ["1", "2", "3", "4"])
+	return historic_ext
