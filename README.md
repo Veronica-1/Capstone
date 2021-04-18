@@ -132,7 +132,7 @@ After this prediction has been run, the prediction can be compared to the histor
   <img src="https://github.com/Veronica-1/Capstone/blob/main/images/Wellness%20Graph.png" alt="Wellness Graph">
 </p>
 
-Finally, a .py can be run from the command prompt of the Anaconda environment created by the YML file for a "no-code" prediction straight to .csv - this is found in the file `prediction_to_csv.py`. Open up 
+Finally, a .py can be run from the command prompt of the Anaconda environment created by the YML file for a "no-code" prediction straight to .csv - this is found in the file `predict_to_csv.py`.
 
 ## Authors
 
